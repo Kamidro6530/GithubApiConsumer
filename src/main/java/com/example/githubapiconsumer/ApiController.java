@@ -1,5 +1,6 @@
 package com.example.githubapiconsumer;
 
+import com.example.githubapiconsumer.response.ApiRepositoryResponse;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
@@ -13,7 +14,7 @@ public class ApiController {
     }
 
     @GetMapping("/users/{username}/repos")
-    public Flux<String> getRepositories(@PathVariable String username){
+    public Flux<ApiRepositoryResponse> getRepositories(@PathVariable String username){
         return webClient.getUserRepos(username);
     }
 }
