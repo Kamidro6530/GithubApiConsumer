@@ -12,7 +12,7 @@ public class ApiWebClient {
 
     public Flux<String> getUserRepos(String username) {
         return webClient.get()
-                .uri("/users/Kamidro6530/repos")
+                .uri(uriBuilder -> uriBuilder.path("/users/{username}/repos").build(username))
                 .retrieve()
                 .bodyToFlux(String.class);
     }
