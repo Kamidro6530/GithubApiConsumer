@@ -17,7 +17,7 @@ public class ApiService {
     }
 
     public Flux<ApiRepositoriesDTO> getUserRepositoriesAndBranches(String username){
-        return webClient.getUserRepos(username)
+        return webClient.getUserRepos(username).filter(repo -> !repo.isFork)
                 .flatMap(repo -> webClient.getUserRepoBranches(username,repo.getName())
                 .map(branch -> new ApiBranchesDTO(branch.getName(), branch.getCommit().getSha()))
                 .collectList()

@@ -12,6 +12,7 @@ class ApiRepositoryResponse {
     private String name;
     @JsonProperty("owner")
     private ApiOwnerResponse owner;
-    private String branches_url;
+    @JsonProperty("fork")
+    boolean isFork;
 
 }
