@@ -1,7 +1,7 @@
 package com.example.githubapiconsumer;
 
-import com.example.githubapiconsumer.dto.ApiRepositoriesDTO;
-import com.example.githubapiconsumer.service.ApiService;
+import com.example.githubapiconsumer.apiConsumer.dto.ApiRepositoriesDTO;
+import com.example.githubapiconsumer.apiConsumer.ApiService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 

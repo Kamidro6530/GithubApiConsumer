@@ -1,4 +1,4 @@
-package com.example.githubapiconsumer.dto;
+package com.example.githubapiconsumer.apiConsumer.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

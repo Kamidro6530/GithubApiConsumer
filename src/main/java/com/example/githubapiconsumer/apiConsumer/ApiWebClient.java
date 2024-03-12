@@ -1,14 +1,11 @@
-package com.example.githubapiconsumer;
+package com.example.githubapiconsumer.apiConsumer;
 
-import com.example.githubapiconsumer.response.ApiBranchesResponse;
-import com.example.githubapiconsumer.response.ApiRepositoryResponse;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
 @Component
-public class ApiWebClient {
+class ApiWebClient {
 
     WebClient webClient = WebClient.create("https://api.github.com");
 

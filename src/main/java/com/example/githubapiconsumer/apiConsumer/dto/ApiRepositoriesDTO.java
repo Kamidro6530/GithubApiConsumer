@@ -1,7 +1,6 @@
-package com.example.githubapiconsumer.dto;
+package com.example.githubapiconsumer.apiConsumer.dto;
 
-import com.example.githubapiconsumer.response.ApiOwnerResponse;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.example.githubapiconsumer.apiConsumer.dto.ApiBranchesDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
