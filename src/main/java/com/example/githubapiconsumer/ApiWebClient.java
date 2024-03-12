@@ -1,5 +1,6 @@
 package com.example.githubapiconsumer;
 
+import com.example.githubapiconsumer.response.ApiBranchesResponse;
 import com.example.githubapiconsumer.response.ApiRepositoryResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,13 @@ public class ApiWebClient {
                 .uri(uriBuilder -> uriBuilder.path("/users/{username}/repos").build(username))
                 .retrieve()
                 .bodyToFlux(ApiRepositoryResponse.class);
+    }
+
+    public Flux<ApiBranchesResponse> getUserRepoBranches(String username,String repoName){
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder.path("/repos/{owner}/{repo}/branches").build(username,repoName))
+                .retrieve()
+                .bodyToFlux(ApiBranchesResponse.class);
     }
 
 }
