@@ -1,0 +1,48 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /users/{username}/repos:
+    get:
+      tags:
+      - api-controller
+      operationId: getApiRepositoriesResponse
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiRepositoriesDTO'
+components:
+  schemas:
+    ApiBranchesDTO:
+      type: object
+      properties:
+        branchName:
+          type: string
+        lastCommitSha:
+          type: string
+    ApiRepositoriesDTO:
+      type: object
+      properties:
+        repoName:
+          type: string
+        repoOwner:
+          type: string
+        branchesData:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiBranchesDTO'
