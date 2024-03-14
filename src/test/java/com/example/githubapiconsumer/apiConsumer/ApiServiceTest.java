@@ -22,23 +22,23 @@ class ApiServiceTest {
 
     @Test
     void getUserRepositoriesAndBranches() {
-        ApiRepositoryResponse repositoryResponse = getApiRepositoryResponse();
+        String repoName = "randomName";
+        ApiRepositoryResponse repositoryResponse = getApiRepositoryResponse(repoName);
         ApiBranchesResponse mockBranchResponse = getApiBranchesResponse();
 
-        Mockito.when(apiWebClient.getUserRepos(any()))
-                .thenReturn(Flux.just(repositoryResponse));
+        Mockito.when(apiWebClient.getUserRepos(any())).thenReturn(Flux.just(repositoryResponse));
         Mockito.when(apiWebClient.getUserRepoBranches(any(), any())).thenReturn(Flux.just(mockBranchResponse));
 
         Flux<ApiRepositoriesDTO> result = apiService.getUserRepositoriesAndBranches("username");
 
         StepVerifier.create(result)
-                .expectNextMatches(object -> object.getRepoName().equals("repoName"))
+                .expectNextMatches(object -> object.getRepoName().equals(repoName))
                 .verifyComplete();
     }
 
     @Test
     void getUserRepositoriesAndBranchesWhenRepositoryIsFork() {
-        ApiRepositoryResponse repositoryResponse = getApiRepositoryResponse();
+        ApiRepositoryResponse repositoryResponse = getApiRepositoryResponse("repoName");
         repositoryResponse.setFork(true);
 
         Mockito.when(apiWebClient.getUserRepos(any()))
@@ -51,9 +51,9 @@ class ApiServiceTest {
                 .verifyComplete();
     }
 
-    private ApiRepositoryResponse getApiRepositoryResponse() {
+    private ApiRepositoryResponse getApiRepositoryResponse(String repoName) {
         ApiRepositoryResponse repositoryResponse = new ApiRepositoryResponse();
-        repositoryResponse.setName("repoName");
+        repositoryResponse.setName(repoName);
         repositoryResponse.setOwner(new ApiOwnerResponse());
 
         return repositoryResponse;

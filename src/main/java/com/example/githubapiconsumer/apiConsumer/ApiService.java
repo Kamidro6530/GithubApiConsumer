@@ -1,7 +1,5 @@
 package com.example.githubapiconsumer.apiConsumer;
 
-
-import com.example.githubapiconsumer.apiConsumer.ApiWebClient;
 import com.example.githubapiconsumer.apiConsumer.dto.ApiBranchesDTO;
 import com.example.githubapiconsumer.apiConsumer.dto.ApiRepositoriesDTO;
 import org.springframework.stereotype.Service;

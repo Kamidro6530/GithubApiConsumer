@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 class ApiBranchesResponse {
-    String name;
+    private String name;
     @JsonProperty(namespace = "commit")
-    ApiCommitResponse commit;
+    private ApiCommitResponse commit;
 }
