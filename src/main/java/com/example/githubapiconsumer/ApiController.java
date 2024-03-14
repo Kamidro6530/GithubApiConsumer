@@ -38,7 +38,7 @@ public class ApiController {
     }
 
     @ExceptionHandler(NotAcceptableStatusException.class)
-    public ResponseEntity<Map<String, String>> handleHttpMediaTypeNotAcceptableException2() {
+    public ResponseEntity<Map<String, String>> handleHttpMediaTypeNotAcceptableException() {
         Map<String, String> errorDetails = new HashMap<>();
         errorDetails.put("message","Not acceptable format");
         errorDetails.put("status", "406");
